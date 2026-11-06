@@ -32,6 +32,8 @@
 
 下载或克隆仓库，保持文件相对位置，双击 `index.html` 即可离线查看。无需安装依赖或启动服务。
 
+右上角可切换浅色和夜晚模式。首次打开跟随系统，浏览器允许时会记住手动选择。
+
 - `index.html` 定义页面结构，`style.css` 管理版式，`script.js` 将 `data.js` 渲染为页面。
 - 完成新一轮后，在 `data.js` 的 `reviews` 中新增对应编号。例如复制编号 5 的结构并新增编号 6，填写 `title`、`goal`、`verified`、`takeaway`、`issue`、`conclusion` 和 `status`。确认该轮实践结束后将 `completed` 设为 `true`。总览、时间线和路线图会据此更新。
 - 按需更新最新一轮的 `focus`、实际耗时 `duration`，以及 `directions`、`insights` 和 `milestones`。更新过的路线任务放在 `phases` 对应轮次。新的成长记录可填入 `extensions` 对应模块的 `entries` 列表。

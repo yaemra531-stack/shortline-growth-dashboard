@@ -1,11 +1,49 @@
 "use strict";
 
+setupTheme();
+
 const data = window.dashboardData;
 
 if (data) {
   renderDashboard(data);
 } else {
   document.getElementById("load-error").hidden = false;
+}
+
+function setupTheme() {
+  const toggle = document.getElementById("theme-toggle");
+  const label = toggle.querySelector(".theme-label");
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const system = window.matchMedia("(prefers-color-scheme: dark)");
+  const storageKey = "shortline-dashboard-theme";
+  let preference;
+
+  try {
+    preference = localStorage.getItem(storageKey);
+  } catch {
+    // Some browsers restrict storage for local files.
+  }
+
+  function applyTheme() {
+    const dark = preference ? preference === "dark" : system.matches;
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    themeColor.content = dark ? "#141c18" : "#f5f5ed";
+    toggle.setAttribute("aria-pressed", String(dark));
+    label.textContent = dark ? "浅色模式" : "夜晚模式";
+  }
+
+  toggle.addEventListener("click", () => {
+    preference = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem(storageKey, preference);
+    } catch {
+      // The toggle still works for the current page.
+    }
+    applyTheme();
+  });
+  system.addEventListener("change", applyTheme);
+  applyTheme();
+  toggle.hidden = false;
 }
 
 function renderDashboard(data) {
