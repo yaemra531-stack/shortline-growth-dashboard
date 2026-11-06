@@ -158,7 +158,8 @@ function renderDashboard(data) {
       ${extension.entries.length ? `<ul>${extension.entries.map((entry) => `<li>${safe(entry)}</li>`).join("")}</ul>` : ""}
     </article>`).join("");
 
-  byId("source").textContent = "资料基线 · 《" + data.source.title + "》｜起于 " + data.source.started + " · 更新于 " + data.source.updated;
+  const { title, version, started, updated } = data.source;
+  byId("source").textContent = `资料基线 · 《${title} ${version}》｜起于 ${started} · 更新于 ${updated}`;
 
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-round]");
