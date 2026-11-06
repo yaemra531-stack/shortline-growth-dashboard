@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="记录短线从局部实验到 120 分钟稳定出片的 21 轮实践。">
+  <meta name="theme-color" content="#f6f6ef">
+  <title>21轮快速迭代成长仪表盘</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true"></span>短线<span class="brand-divider"></span><span class="brand-sub">实践档案</span></a>
+      <nav aria-label="页面导航">
+        <a href="#timeline">成长时间线</a>
+        <a href="#directions">六大方向</a>
+        <a href="#roadmap">21轮路线</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell" id="main">
+    <section id="overview" class="hero" aria-labelledby="page-title">
+      <div class="hero-intro">
+        <p class="eyebrow hero-eyebrow"><span class="live-dot"></span>每日一个 AI 方法</p>
+        <h1 id="page-title">21轮快速迭代<br>成长仪表盘</h1>
+        <p class="hero-goal">目标是在 <strong id="goal-minutes"></strong> 分钟内，<br class="mobile-break">稳定生产一条高质量短视频。</p>
+        <div class="hero-meta">
+          <span id="current-version" class="current-version"></span>
+          <span id="current-stage"></span>
+        </div>
+      </div>
+      <div class="progress-panel">
+        <div class="progress-top">
+          <div>
+            <p class="progress-label">已完成轮次</p>
+            <div class="progress-numbers"><strong id="completed"></strong><span id="total"></span></div>
+          </div>
+          <p id="rate" class="progress-rate"></p>
+        </div>
+        <div id="round-grid" class="round-grid" aria-label="查看指定轮次"></div>
+        <div class="legend">
+          <span><i class="legend-done"></i>已完成</span>
+          <span><i class="legend-now"></i>当前轮</span>
+          <span><i class="legend-next"></i>后续计划</span>
+        </div>
+      </div>
+    </section>
+    <noscript><p class="notice">请启用 JavaScript，以便读取仪表盘的本地数据。</p></noscript>
+    <p id="load-error" class="notice" hidden>未能读取数据。请将 data.js 与 index.html 保存在同一个文件夹。</p>
+    <div class="focus-row">
+      <section id="focus" class="focus-card panel" aria-label="当前瓶颈"></section>
+      <section id="funnel" class="funnel-card panel" aria-label="V5 候选精选"></section>
+    </div>
+
+    <section id="timeline" class="dashboard-section" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">01 / 实践记录</p><h2 id="timeline-title">成长时间线</h2></div>
+        <p>选择一个轮次，查看目标、结果和验证边界。</p>
+      </div>
+      <div class="timeline-layout">
+        <ol id="history" class="history" aria-label="已记录轮次"></ol>
+        <article id="round-detail" class="round-detail panel" tabindex="-1" aria-labelledby="round-title"></article>
+      </div>
+    </section>
+
+    <section id="directions" class="dashboard-section" aria-labelledby="directions-title">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">02 / 生产能力</p><h2 id="directions-title">六大方向能力面板</h2></div>
+        <p>六个环节固定，每轮按实际瓶颈推进。</p>
+      </div>
+      <div id="direction-grid" class="direction-grid"></div>
+      <div id="process" class="process-strip"></div>
+    </section>
+
+    <section id="roadmap" class="dashboard-section" aria-labelledby="roadmap-title">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">03 / 阶段计划</p><h2 id="roadmap-title">21轮路线图</h2></div>
+        <p>后续安排可随真实实践调整。展开阶段查看具体任务。</p>
+      </div>
+      <div id="phase-list" class="phase-list"></div>
+    </section>
+
+    <section id="insights" class="dashboard-section" aria-labelledby="insights-title">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">04 / 方法积累</p><h2 id="insights-title">关键认知升级</h2></div>
+        <p>记录实验中形成的判断，以及下一次怎么做。</p>
+      </div>
+      <div id="insight-grid" class="insight-grid"></div>
+      <div id="principles" class="process-strip"></div>
+    </section>
+
+    <section id="milestones" class="dashboard-section" aria-labelledby="milestones-title">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">05 / 高光时刻</p><h2 id="milestones-title">里程碑</h2></div>
+        <p>每个节点对应一次已经发生的实践。</p>
+      </div>
+      <ol id="milestone-list" class="milestone-list"></ol>
+    </section>
+
+    <section id="extensions" class="dashboard-section" aria-labelledby="extensions-title">
+      <div class="section-head">
+        <div><p class="eyebrow section-kicker">06 / 后续记录</p><h2 id="extensions-title">成长档案</h2></div>
+        <p>有了新的样本和反馈，再补入对应记录。</p>
+      </div>
+      <div id="extension-grid" class="extension-grid"></div>
+    </section>
+  </main>
+  <footer class="shell footer">
+    <div><strong>短线实践档案</strong><p id="source"></p></div>
+    <a href="#overview">回到总览 <span aria-hidden="true">↑</span></a>
+  </footer>
+</body>
+</html>
